@@ -15,6 +15,10 @@
     @apply w-11/12 m-auto;
   }
 
+  .flex-important {
+    @apply flex !important;
+  }
+
   /* Scroll */
   .scroll-hidden::-webkit-scrollbar {
     display: none;
@@ -54,6 +58,10 @@
   /* Blur-Effect */
   .blur-effect-theme {
     @apply bg-white/50 bg-clip-padding backdrop-filter backdrop-blur bg-opacity-50 opacity-100 z-[100] shadow-sm shadow-slate-100 transition-all duration-300;
+  }
+
+  .blur-effect-theme-1 {
+    @apply bg-white/30 bg-clip-padding backdrop-filter bg-opacity-50 opacity-100 z-[100] shadow-sm shadow-slate-100 transition-all duration-300;
   }
 
   /* Icon Stles */

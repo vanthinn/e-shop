@@ -14,7 +14,7 @@ function BannerItem({
     backgroundSize: "cover",
   };
   return (
-    <div className="h-[200vh] relative items-center" style={styleBackground}>
+    <div className="h-[100vh] relative items-center" style={styleBackground}>
       <div className="absolute top-[30%] left-[32%] text-center">
         <span className="text-white text-3xl text-light ">{topSuggest}</span>
         <h1 className="text-white text-8xl mb-5"> {title}</h1>

@@ -19,12 +19,9 @@ const mainNav = [
 function Header(props) {
   const [navState, setNavState] = useState(false);
   const { pathname } = useLocation();
+  console.log(pathname);
 
   const activeNav = mainNav.findIndex((e) => e.path === pathname);
-
-  // if (pathname !== "/home") {
-  //   setNavState(true);
-  // }
 
   const onNavScroll = () => {
     if (window.scrollY > 100 && pathname === "/home") {
@@ -39,7 +36,7 @@ function Header(props) {
     return () => {
       window.removeEventListener("scroll", onNavScroll);
     };
-  }, []);
+  }, [pathname]);
 
   return (
     <div
