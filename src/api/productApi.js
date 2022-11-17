@@ -1,4 +1,4 @@
-import axiosClient from "./axiosClient";
+import axiosClient from "./AxiosClient";
 
 const productApi = {
   getAll: (params) => {
@@ -7,6 +7,14 @@ const productApi = {
   },
   getProduct: (id) => {
     const url = `/products/${id}`;
+    return axiosClient.get(url);
+  },
+  getCategory: () => {
+    const url = `/products/categories`;
+    return axiosClient.get(url);
+  },
+  getProductByCategory: (category) => {
+    const url = `/products/category/${category}`;
     return axiosClient.get(url);
   },
 };

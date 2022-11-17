@@ -19,8 +19,6 @@ const mainNav = [
 function Header(props) {
   const [navState, setNavState] = useState(false);
   const { pathname } = useLocation();
-  console.log(pathname);
-
   const activeNav = mainNav.findIndex((e) => e.path === pathname);
 
   const onNavScroll = () => {
@@ -40,7 +38,7 @@ function Header(props) {
 
   return (
     <div
-      className={`fixed top-0 left-0 right-0 flex justify-between items-center h-[60px] w-[100%] z-50 text-white px-8
+      className={`fixed top-0 left-0 right-0 flex justify-between items-center h-[60px] w-[100%] z-[200] text-white px-8
        transition-color duration-500 ${
          navState ? "bg-[#333] animate-navbar" : "bg-transparent"
        }`}
