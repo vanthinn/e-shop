@@ -50,20 +50,20 @@ function TrendingProduct(props) {
     pagination: false,
     autoplay: true,
     autoplaySpeed: 2000,
-    speed: 400,
+    speed: 300,
     padding: "1rem",
     arrows: true,
     breakpoints: {
-      1200: { perPage: 6 },
-      991: { perPage: 4 },
-      768: { perPage: 3 },
-      500: { perPage: 2 },
+      1200: { perPage: 4 },
+      991: { perPage: 3 },
+      768: { perPage: 2 },
+      500: { perPage: 1 },
       425: { perPage: 1 },
     },
   };
 
   return (
-    <div className="mt-16 flex flex-col px-44">
+    <div className="mt-16 flex flex-col mx-48">
       <h1 className="text-4xl">Trendy Products</h1>
       <div className="mt-5 flex justify-center">
         <li

@@ -45,7 +45,7 @@ function VideoBanner(props) {
             </svg>
           </div>
           <span
-            className="absolute top-[50%] left-[50%] w-[60px] h-[60px] rounded-full z-0
+            className="absolute top-[50%] left-[50%] w-[60px] h-[60px] rounded-full z-[0]
              translate-[-50%, -50%] scale-110 bg-white/30 animate-video"
           ></span>
         </button>
@@ -53,16 +53,16 @@ function VideoBanner(props) {
 
       <div
         className={`fixed top-0 right-0 left-0 bottom-0 transitions-theme  ${
-          isShowing
-            ? "block visibility-visible opacity-100"
-            : "visibility-hidden"
+          isShowing ? "block visibility-visible opacity-100" : "hidden"
         }`}
       >
         <div
-          className={`absolute top-0 right-0 left-0 bottom-0 bg-slate-500/80 transitions-theme ${
-            isShowing ? "opacity-100 z-[400]" : "opacity-0"
+          className={`absolute top-0 right-0 left-0 bottom-0 bg-black/50 transitions-theme ${
+            isShowing
+              ? "opacity-100 z-[400]"
+              : "visibility-hidden opacity-0 z-[-1] hidden "
           }`}
-          onClick={handleSetShow}
+          onClick={() => handleSetShow()}
         ></div>
         <div className="absolute top-[50%] left-[50%] z-[500] transitions-theme w-[70%]  ">
           {isShowing && (

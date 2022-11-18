@@ -3,6 +3,7 @@ import Home from "./page/Home";
 import Catalog from "./page/Catalog";
 import Header from "./component/Header";
 import Contact from "./page/Contact";
+import Footer from "./component/Footer";
 
 import "./App.css";
 
@@ -16,6 +17,7 @@ function App() {
         <Route path="/products" element={<Catalog />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
+      <Footer />
     </div>
   );
 }
