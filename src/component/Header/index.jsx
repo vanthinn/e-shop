@@ -30,7 +30,6 @@ function Header(props) {
   };
   useEffect(() => {
     window.addEventListener("scroll", onNavScroll);
-
     return () => {
       window.removeEventListener("scroll", onNavScroll);
     };

@@ -1,9 +1,10 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import Home from "./page/Home";
-import Catalog from "./page/Catalog";
+import Products from "./page/Products";
 import Header from "./component/Header";
 import Contact from "./page/Contact";
 import Footer from "./component/Footer";
+import ProductDetail from "./page/ProductDetail";
 
 import "./App.css";
 
@@ -14,7 +15,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Navigate replace to="/home" />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/products" element={<Catalog />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/products/:idproduct" element={<ProductDetail />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
       <Footer />

@@ -1,12 +1,21 @@
 import React from "react";
 import Evaluate from "../Evaluate";
+import { useNavigate } from "react-router-dom";
 
 function ProductItem(props) {
+  const navigate = useNavigate();
   const { product } = props;
   const { id, title, price, image, rating } = product;
-  console.log(id);
+
+  function handleClick() {
+    navigate(`/products/${id}`);
+    window.scrollTo(0, 0);
+  }
   return (
-    <div className="flex flex-col justify-between group shadow-lg  h-[400px] border-[1px] cursor-pointer hover:border-cyan-600 ">
+    <div
+      className="scroll-smooth flex flex-col justify-between group shadow-lg  h-[400px] border-[1px] cursor-pointer hover:border-cyan-600 "
+      onClick={() => handleClick()}
+    >
       <div className="relative ">
         <img
           className="w-[100%] h-[260px] object-contain p-4"

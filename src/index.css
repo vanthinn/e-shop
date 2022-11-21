@@ -11,6 +11,10 @@
     font-family: "Poppins", sans-serif;
   }
 
+  html {
+    @apply scroll-smooth;
+  }
+
   /* container */
   .app-container {
     @apply w-11/12 m-auto;
