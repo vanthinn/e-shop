@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import productApi from "../../api/productApi";
 import BannerProducts from "./component/BannerProducts";
 import FilterCatelog from "./component/FilterCatelog";
+import ListProduct from "./component/ListProduct";
 
 function Products(props) {
   const [category, setCategory] = useState([]);
@@ -32,7 +33,9 @@ function Products(props) {
       <BannerProducts />
       <div className="mx-48 mt-8 grid grid-cols-4 gap-4">
         <FilterCatelog category={category} listproduct={listproduct} />
-        <div className="col-span-3 bg-slate-500"></div>
+        <div className="col-span-3 ">
+          <ListProduct listproduct={listproduct} />
+        </div>
       </div>
     </div>
   );
