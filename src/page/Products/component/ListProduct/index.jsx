@@ -23,7 +23,8 @@ function ListProduct(props) {
     <div className="flex flex-col">
       <div className="flex justify-between ">
         <h1>
-          Showing <span className="text-blue-700">of 20</span> Products
+          Showing <span className="text-blue-700">of {listproduct.length}</span>{" "}
+          Products
         </h1>
         <div className="flex items-center gap-3">
           <div className="flex items-center">
@@ -82,10 +83,10 @@ function ListProduct(props) {
         previousLabel="<"
         renderOnZeroPageCount={null}
         containerClassName="mt-5 flex justify-center items-center gap-3  text-base"
-        pageClassName="border-[1px] w-[32px] h-[30px] flex justify-center items-center  rounded-[2px] cursor-pointer"
-        activeClassName="text-white bg-blue-500"
+        pageLinkClassName=" w-[100%] cursor-pointer  pointer-events-auto; border-[1px] w-[32px] h-[30px] flex justify-center items-center rounded-[2px] "
+        activeLinkClassName="text-white bg-blue-500"
         nextClassName="border-[1px] w-[32px] h-[30px] text-xl"
-        previousClassName="border-[1px] w-[32px] h-[30px] text-xl "
+        previousClassName="border-[1px] w-[32px] h-[30px] text-xl"
       />
     </div>
   );

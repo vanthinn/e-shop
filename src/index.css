@@ -94,3 +94,9 @@
     @apply transition-all duration-700 ease-in-out cursor-pointer;
   }
 }
+
+@layer components {
+  .error-message {
+    @apply text-sm mt-1   text-red-600;
+  }
+}

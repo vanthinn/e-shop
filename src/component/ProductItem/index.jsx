@@ -18,7 +18,7 @@ function ProductItem(props) {
     >
       <div className="relative ">
         <img
-          className="w-[100%] h-[260px] object-contain p-4"
+          className="w-[100%] h-[260px] object-contain p-4 "
           src={image}
           alt={title}
         />
@@ -26,7 +26,8 @@ function ProductItem(props) {
         <div
           className="absolute bottom-0 bg-slate-800 flex justify-center items-center py-2 translate-y-[50%] 
           transition-all duration-300 ease-linear z-10
-         text-slate-100 w-full invisible group-hover:visible group-hover:translate-y-0"
+         text-slate-100 w-full invisible group-hover:visible group-hover:translate-y-0 
+         group  "
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -34,7 +35,7 @@ function ProductItem(props) {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="w-6 h-6 mr-2"
+            className="w-6 h-6 mr-2 "
           >
             <path
               strokeLinecap="round"

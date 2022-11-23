@@ -1,17 +1,28 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { FaAngleDown } from "react-icons/fa";
 
 function FilterCatelog(props) {
-  const { category, listproduct } = props;
-  console.log(category, listproduct);
+  const { category, listproduct, onChangeCat, catAtive, onChangeFilterPrice } =
+    props;
   const [showcatelog, setShowcatelog] = useState(true);
   const [showprice, setShowprice] = useState(true);
+
+  const [FromPrice, setFromprice] = useState(0);
+  const [ToPrice, setToprice] = useState(1000);
 
   function fiterproduct(category) {
     const products = listproduct.filter(
       (product) => product.category === category
     );
     return products;
+  }
+
+  function handleChangeCat(cat = "All") {
+    onChangeCat(cat);
+  }
+
+  function handleFilter(FromPrice, ToPrice) {
+    onChangeFilterPrice(FromPrice, ToPrice);
   }
 
   return (
@@ -39,7 +50,12 @@ function FilterCatelog(props) {
           }`}
         >
           <div className="flex justify-between text-base my-2">
-            <span>All</span>
+            <span
+              className={`${catAtive === "All" ? "text-blue-600" : ""}`}
+              onClick={() => handleChangeCat()}
+            >
+              All
+            </span>
             <div className=" mr-5 flex h-[25px] w-[25px] bg-slate-100/95 rounded-[4px]">
               <span className="m-auto text-[14px] text-gray-600/60 ">
                 {listproduct.length}
@@ -48,7 +64,12 @@ function FilterCatelog(props) {
           </div>
           {category.map((cat) => (
             <div className="flex justify-between text-base my-2">
-              <span>{cat}</span>
+              <span
+                className={`${catAtive === cat ? "text-blue-600" : ""}`}
+                onClick={() => handleChangeCat(cat)}
+              >
+                {cat}
+              </span>
               <div className="mr-5 flex h-[25px] w-[25px] bg-slate-100/95  rounded-[4px]">
                 <span className="m-auto text-[14px] text-slate-500/60 ">
                   {fiterproduct(cat).length}
@@ -77,19 +98,24 @@ function FilterCatelog(props) {
               <span>From </span>
               <input
                 type="text"
-                className="border-[1px] border-gray-500 pl-2 w-[60%]"
+                value={FromPrice}
+                onChange={(e) => setFromprice(e.target.value)}
+                className="border-[1px] border-gray-500 pl-2 w-[60%] "
               />
             </div>
             <div className="flex justify-between items-center">
               <span>To </span>
               <input
                 type="text"
+                value={ToPrice}
+                onChange={(e) => setToprice(e.target.value)}
                 className="border-[1px] border-gray-500 pl-2 w-[60%] "
               />
             </div>
             <button
               type="button"
               className=" m-auto text-white bg-blue-500 w-[50%] py-1 mt-2 rounded-[4px] hover:opacity-90"
+              onClick={() => handleFilter(FromPrice, ToPrice)}
             >
               Filter
             </button>
