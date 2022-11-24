@@ -6,8 +6,11 @@ import { FaFacebookF, FaInstagram, FaYoutube } from "react-icons/fa";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/css";
 import ProductItem from "../../component/ProductItem";
+import { useDispatch, useSelector } from "react-redux";
+import { addItemToCart } from "../../app/CartSlice";
 
 function ProductDetail(props) {
+  const dispatch = useDispatch();
   const { idproduct } = useParams();
   const [product, setProduct] = useState({});
   const [productList, setProductList] = useState([]);
@@ -28,6 +31,14 @@ function ProductDetail(props) {
     };
     fetchProductList();
   }, [product]);
+
+  function handleAddItem() {
+    const action = {
+      ...product,
+      cartQuantity: countProduct,
+    };
+    dispatch(addItemToCart(action));
+  }
 
   const splideOptions = {
     perPage: 4,
@@ -88,7 +99,11 @@ function ProductDetail(props) {
           <div className="my-6 border-[1px] border-slate-700 text-xl">
             <span
               className="cursor-pointer ml-2"
-              onClick={() => setCountProduct(countProduct - 1)}
+              onClick={() =>
+                countProduct === 1
+                  ? setCountProduct(1)
+                  : setCountProduct(countProduct - 1)
+              }
             >
               -
             </span>
@@ -106,6 +121,7 @@ function ProductDetail(props) {
               type="button"
               className="text-lg font-semibold text-blue-600  hover:bg-blue-600 hover:text-white px-3 py-2 border-[1px] border-blue-600 
               rounded-md transitions-theme"
+              onClick={() => handleAddItem()}
             >
               ADD TO CART
             </button>

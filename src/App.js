@@ -3,6 +3,7 @@ import Home from "./page/Home";
 import Products from "./page/Products";
 import Header from "./component/Header";
 import Contact from "./page/Contact";
+import Cart from "./page/Cart";
 import Footer from "./component/Footer";
 import ProductDetail from "./page/ProductDetail";
 
@@ -18,6 +19,7 @@ function App() {
         <Route path="/products" element={<Products />} />
         <Route path="/products/:idproduct" element={<ProductDetail />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/cart" element={<Cart />} />
       </Routes>
       <Footer />
     </div>

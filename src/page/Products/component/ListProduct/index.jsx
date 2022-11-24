@@ -4,7 +4,7 @@ import ProductItem from "../../../../component/ProductItem";
 import ReactPaginate from "react-paginate";
 
 function ListProduct(props) {
-  const { listproduct } = props;
+  const { listproduct, onSortPrice } = props;
 
   const [itemOffset, setItemOffset] = useState(0);
   const itemsPerPage = 9;
@@ -19,6 +19,14 @@ function ListProduct(props) {
     window.scrollTo(0, 0);
   };
 
+  function handleSortPrice(value) {
+    onSortPrice(value);
+  }
+
+  // function handleSortMostRate(value) {
+  //   onSortMostRate(value);
+  // }
+
   return (
     <div className="flex flex-col">
       <div className="flex justify-between ">
@@ -28,32 +36,25 @@ function ListProduct(props) {
         </h1>
         <div className="flex items-center gap-3">
           <div className="flex items-center">
-            <h1 className="mr-4 text-gray-500">Sort by:</h1>
-            <Select
-              defaultValue="Default"
+            {/* <h1 className="mr-4 text-gray-500">Sort by:</h1> */}
+            {/* <Select
+              placeholder="Rate"
               className="w-[120px]"
               options={[
-                {
-                  value: "Default",
-                  label: "Default",
-                },
                 {
                   value: "Most rate",
                   label: "Most rate",
                 },
               ]}
-            />
+              onChange={(value) => handleSortMostRate(value)}
+            /> */}
           </div>
           <div className="flex items-center">
             <h1 className="mr-4 text-gray-500">Order by:</h1>
             <Select
-              defaultValue="Default"
-              className="w-[160px]"
+              className="w-[170px]"
+              placeholder="Price"
               options={[
-                {
-                  value: "Default",
-                  label: "Default",
-                },
                 {
                   value: "Highest to lowest",
                   label: "Highest to lowest",
@@ -63,6 +64,7 @@ function ListProduct(props) {
                   label: "Lowest to highest",
                 },
               ]}
+              onChange={(value) => handleSortPrice(value)}
             />
           </div>
         </div>

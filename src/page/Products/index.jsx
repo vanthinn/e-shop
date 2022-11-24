@@ -86,6 +86,21 @@ function Products(props) {
       } catch (error) {}
     }
   }
+
+  // function handleSortMostRate(value) {
+  //   const newData = listproduct.filter((product) => product.rating.rate >= 3);
+  //   setListProduct(newData);
+  // }
+
+  function handleSortPrice(value) {
+    const newArr = [...listproduct];
+    if (value === "Lowest to highest") {
+      newArr.sort((a, b) => +a.price - +b.price);
+    } else {
+      newArr.sort((a, b) => +b.price - +a.price);
+    }
+    setListProduct(newArr);
+  }
   return (
     <div>
       <div className="h-[60px] bg-[#333] fixed top-0 left-0 right-0 z-[100]"></div>
@@ -99,7 +114,11 @@ function Products(props) {
           onChangeFilterPrice={handleFilter}
         />
         <div className="col-span-3 ">
-          <ListProduct listproduct={listproduct} />
+          <ListProduct
+            listproduct={listproduct}
+            onSortPrice={handleSortPrice}
+            // onSortMostRate={handleSortMostRate}
+          />
         </div>
       </div>
     </div>

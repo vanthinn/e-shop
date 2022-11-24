@@ -1,9 +1,12 @@
 import React from "react";
 import Evaluate from "../Evaluate";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addItemToCart } from "../../app/CartSlice";
 
 function ProductItem(props) {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const { product } = props;
   const { id, title, price, image, rating } = product;
 
@@ -11,23 +14,27 @@ function ProductItem(props) {
     navigate(`/products/${id}`);
     window.scrollTo(0, 0);
   }
+
+  function handleAddItemToCart(product) {
+    const action = { ...product, cartQuantity: 1 };
+    dispatch(addItemToCart(action));
+  }
   return (
-    <div
-      className="scroll-smooth flex flex-col justify-between group shadow-lg  h-[400px] border-[1px] cursor-pointer hover:border-cyan-600 "
-      onClick={() => handleClick()}
-    >
+    <div className="scroll-smooth flex flex-col justify-between group shadow-lg  h-[400px] border-[1px] cursor-pointer hover:border-cyan-600 ">
       <div className="relative ">
         <img
           className="w-[100%] h-[260px] object-contain p-4 "
           src={image}
           alt={title}
+          onClick={() => handleClick()}
         />
 
         <div
           className="absolute bottom-0 bg-slate-800 flex justify-center items-center py-2 translate-y-[50%] 
           transition-all duration-300 ease-linear z-10
          text-slate-100 w-full invisible group-hover:visible group-hover:translate-y-0 
-         group  "
+         group hover:bg-blue-600  "
+          onClick={() => handleAddItemToCart(product)}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -62,7 +69,10 @@ function ProductItem(props) {
           </svg>
         </div>
       </div>
-      <div className="flex flex-col px-2 bg-white z-50">
+      <div
+        className="flex flex-col px-2 bg-white z-50"
+        onClick={() => handleClick()}
+      >
         <h1 className="mb-1">{title}</h1>
         <span className="text-base text-blue-500 ">${price}</span>
       </div>
