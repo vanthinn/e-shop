@@ -49,12 +49,20 @@ function FilterCatelog(props) {
             showcatelog ? "block opacity-100 " : "hidden opacity-0"
           }`}
         >
-          <div className="flex justify-between text-base my-2">
+          <div className="flex justify-between text-lg my-2">
             <span
-              className={`${catAtive === "All" ? "text-blue-600" : ""}`}
+              before="&nbsp;All&nbsp;"
+              className={`relative before:content-[attr(before)] before:absolute  before:-inset-0    stroke-2 stroke-white/20  before:w-[0] before:overflow-hidden
+                before:transition-all before:duration-1000 before:linear before:text-blue-600 before:h-auto before:border-r-[3px]
+                hover:before:border-blue-600 
+                 ${
+                   catAtive === "All"
+                     ? "text-blue-700 before:border-blue-600 "
+                     : "text-slate-600 hover:before:w-[100%] before:border-slate-400 "
+                 }`}
               onClick={() => handleChangeCat()}
             >
-              All
+              &nbsp;All&nbsp;
             </span>
             <div className=" mr-5 flex h-[25px] w-[25px] bg-slate-100/95 rounded-[4px]">
               <span className="m-auto text-[14px] text-gray-600/60 ">
@@ -63,12 +71,22 @@ function FilterCatelog(props) {
             </div>
           </div>
           {category.map((cat) => (
-            <div className="flex justify-between text-base my-2">
+            <div className="flex justify-between text-lg my-2">
               <span
-                className={`${catAtive === cat ? "text-blue-600" : ""}`}
+                before={`\u00A0${cat.split(" ")[0]}\u00A0${
+                  cat.split(" ")[1]
+                }\u00A0`}
+                className={`relative before:content-[attr(before)] before:absolute  before:-inset-0    stroke-2 stroke-white/20  before:w-[0] before:overflow-hidden
+                before:transition-all before:duration-1000 before:linear before:text-blue-600 before:h-auto before:border-r-[3px]
+                hover:before:border-blue-600 
+                 ${
+                   catAtive === cat
+                     ? "text-blue-700 before:border-blue-600 "
+                     : "text-slate-600 hover:before:w-[100%] before:border-slate-400 "
+                 }`}
                 onClick={() => handleChangeCat(cat)}
               >
-                {cat}
+                &nbsp;{cat}&nbsp;
               </span>
               <div className="mr-5 flex h-[25px] w-[25px] bg-slate-100/95  rounded-[4px]">
                 <span className="m-auto text-[14px] text-slate-500/60 ">

@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { signOut } from "firebase/auth";
+import { auth } from "../../firebase/config";
+import toast from "react-hot-toast";
 
 const mainNav = [
   {
@@ -22,8 +25,10 @@ function Header(props) {
   const { pathname } = useLocation();
   const activeNav = mainNav.findIndex((e) => e.path === pathname);
   const navigate = useNavigate();
-  const totalQuantityItems = useSelector(
-    (state) => state.cart.cartItems.length
+  const totalQuantityItems = useSelector((state) =>
+    state.cart.cartItems.reduce((total, cartItem) => {
+      return total + cartItem.cartQuantity;
+    }, 0)
   );
 
   const onNavScroll = () => {
@@ -39,6 +44,16 @@ function Header(props) {
       window.removeEventListener("scroll", onNavScroll);
     };
   }, [pathname]);
+
+  function handleLogout() {
+    signOut(auth)
+      .then(() => {
+        toast.success("Log out successfully!");
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      });
+  }
 
   return (
     <div
@@ -122,7 +137,8 @@ function Header(props) {
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
           fill="currentColor"
-          className="w-8 h-8 mx-4"
+          className="w-8 h-8 mx-4 cursor-pointer"
+          onClick={() => navigate("/login")}
         >
           <path
             fillRule="evenodd"
@@ -130,6 +146,7 @@ function Header(props) {
             clipRule="evenodd"
           />
         </svg>
+        <span onClick={() => handleLogout()}> log out</span>
       </div>
     </div>
   );

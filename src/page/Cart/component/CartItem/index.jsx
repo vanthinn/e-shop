@@ -1,8 +1,9 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function CartItem(props) {
+  const navigate = useNavigate();
   const { cartItem, onRemoveItem, onIncreaseItem, onDecreaseItem } = props;
-
   function handleRemoveItem(item) {
     onRemoveItem(item);
   }
@@ -30,12 +31,18 @@ function CartItem(props) {
         >
           <div className="w-[10%] ">
             <img
-              className="h-[90%] object-contain p-2"
+              className="h-[90%] object-contain p-2 cursor-pointer"
               src={item.image}
               alt=""
+              onClick={() => navigate(`/products/${item.id}`)}
             />
           </div>
-          <h1 className="w-[30%] text-base text-left px-5 ">{item.title}</h1>
+          <h1
+            className="w-[30%] text-base text-left px-5 cursor-pointer "
+            onClick={() => navigate(`/products/${item.id}`)}
+          >
+            {item.title}
+          </h1>
           <span className="w-[20%] text-left text-lg">${item.price}</span>
           <div className="w-[20%] ">
             <div className="w-[50%] border-[1px] border-slate-600 text-center text-lg">

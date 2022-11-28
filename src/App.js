@@ -6,6 +6,8 @@ import Contact from "./page/Contact";
 import Cart from "./page/Cart";
 import Footer from "./component/Footer";
 import ProductDetail from "./page/ProductDetail";
+import Login from "./page/Login";
+import Signup from "./page/Signup";
 
 import "./App.css";
 
@@ -20,6 +22,8 @@ function App() {
         <Route path="/products/:idproduct" element={<ProductDetail />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
       </Routes>
       <Footer />
     </div>
