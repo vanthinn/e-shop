@@ -3,11 +3,13 @@ import productApi from "../../../../api/productApi";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/css";
 import ProductItem from "../../../../component/ProductItem";
+import ProductSkeleton from "../../../../component/ProductSkeleton";
 
 function TrendingProduct(props) {
   const [category, setcategory] = useState([]);
   const [currentCat, setcurrentCat] = useState("all");
   const [currentProduct, setcurrentProduct] = useState([]);
+  const [isloading, setisloading] = useState(true);
 
   function handleChange(cat) {
     setcurrentCat(cat);
@@ -31,8 +33,8 @@ function TrendingProduct(props) {
         var response;
         if (currentCat === "all") response = await productApi.getAll();
         else response = await productApi.getProductByCategory(currentCat);
-
         setcurrentProduct(response);
+        setisloading(false);
       } catch (error) {
         console.log(error);
       }
@@ -89,6 +91,11 @@ function TrendingProduct(props) {
 
       <div className="my-10">
         <Splide options={splideOptions}>
+          {isloading && (
+            <SplideSlide>
+              <ProductSkeleton count={1} />
+            </SplideSlide>
+          )}
           {currentProduct.map((product) => (
             <SplideSlide key={product.id}>
               <ProductItem product={product} />

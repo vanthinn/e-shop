@@ -8,12 +8,14 @@ function Products(props) {
   const [category, setCategory] = useState([]);
   const [listproduct, setListProduct] = useState([]);
   const catAtive = useRef("All");
+  const [isloading, setIsloading] = useState(true);
 
   function fetchProductList() {
     try {
       const fetchAPI = async () => {
         const response = await productApi.getAll();
         setListProduct(response);
+        setIsloading(false);
       };
       fetchAPI();
     } catch (error) {}
@@ -117,6 +119,7 @@ function Products(props) {
           <ListProduct
             listproduct={listproduct}
             onSortPrice={handleSortPrice}
+            isloading={isloading}
             // onSortMostRate={handleSortMostRate}
           />
         </div>

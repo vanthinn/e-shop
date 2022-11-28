@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import { Select } from "antd";
 import ProductItem from "../../../../component/ProductItem";
 import ReactPaginate from "react-paginate";
+import ProductSkeleton from "../../../../component/ProductSkeleton";
 
 function ListProduct(props) {
-  const { listproduct, onSortPrice } = props;
+  const { listproduct, onSortPrice, isloading } = props;
 
   const [itemOffset, setItemOffset] = useState(0);
   const itemsPerPage = 9;
@@ -71,8 +72,11 @@ function ListProduct(props) {
       </div>
 
       <div className=" mt-5 grid grid-cols-3 gap-3">
+        {isloading && <ProductSkeleton count={9} />}
         {currentItems.map((product) => (
-          <ProductItem product={product} />
+          <div>
+            <ProductItem product={product} />
+          </div>
         ))}
       </div>
 

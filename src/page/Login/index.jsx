@@ -54,8 +54,6 @@ function Login(props) {
 
   function handleLoginWithGoogle() {
     const provider = new GoogleAuthProvider();
-    provider.addScope("https://www.googleapis.com/auth/contacts.readonly");
-
     signInWithPopup(auth, provider)
       .then((result) => {
         const user = result.user;
@@ -77,20 +75,19 @@ function Login(props) {
 
   function handleLoginWithFacebook() {
     const provider = new FacebookAuthProvider();
-    provider.addScope("user_birthday");
 
     signInWithPopup(auth, provider)
       .then((result) => {
         console.log(result);
         const user = result.user;
         toast.success("Log in Successfully!!");
-        const action = {
-          email: user.email,
-          username: user.displayName,
-          userid: user.uid,
-        };
-        dispatch(SetActiveUser(action));
-        navigate("/");
+        // const action = {
+        //   email: user.email,
+        //   username: user.displayName,
+        //   userid: user.uid,
+        // };
+        // dispatch(SetActiveUser(action));
+        // navigate("/");
       })
       .catch((error) => {
         toast.error("Log in Fall!!");
