@@ -54,6 +54,10 @@ const CartSlice = createSlice({
         state.cartItems[itemIndex].cartQuantity -= 1;
       }
     },
+
+    ClearAll: (state, action) => {
+      state.cartItems = [];
+    },
   },
 });
 
@@ -63,6 +67,7 @@ export const {
   SetIncreaseItem,
   setDecreaseItem,
   GetTotal,
+  ClearAll,
 } = CartSlice.actions;
 
 export default CartSlice.reducer;

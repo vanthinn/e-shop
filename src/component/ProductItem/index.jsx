@@ -1,11 +1,14 @@
 import React from "react";
 import Evaluate from "../Evaluate";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addItemToCart } from "../../app/CartSlice";
+import toast from "react-hot-toast";
 
 function ProductItem(props) {
   const navigate = useNavigate();
+  const islogin = useSelector((state) => state.auth.isLogin);
+  console.log(islogin);
   const dispatch = useDispatch();
   const { product } = props;
   const { id, title, price, image, rating } = product;
@@ -34,7 +37,11 @@ function ProductItem(props) {
           transition-all duration-300 ease-linear z-10
          text-slate-100 w-full invisible group-hover:visible group-hover:translate-y-0 
          group hover:bg-blue-600  "
-          onClick={() => handleAddItemToCart(product)}
+          onClick={() =>
+            islogin
+              ? handleAddItemToCart(product)
+              : toast.error("Login required")
+          }
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

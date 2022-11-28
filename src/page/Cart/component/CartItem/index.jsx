@@ -62,7 +62,7 @@ function CartItem(props) {
             </div>
           </div>
           <span className="w-[15%] text-lg text-blue-700 text-left">
-            ${item.price * item.cartQuantity}
+            ${Math.round(item.price * item.cartQuantity * 100) / 100}
           </span>
           <span
             className="text-xl text-red-600 cursor-pointer hover:bg-slate-100 px-2"

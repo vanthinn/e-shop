@@ -8,9 +8,11 @@ import "@splidejs/splide/css";
 import ProductItem from "../../component/ProductItem";
 import { useDispatch, useSelector } from "react-redux";
 import { addItemToCart } from "../../app/CartSlice";
+import toast from "react-hot-toast";
 
 function ProductDetail(props) {
   const dispatch = useDispatch();
+  const islogin = useSelector((state) => state.auth.isLogin);
   const { idproduct } = useParams();
   const [product, setProduct] = useState({});
   const [productList, setProductList] = useState([]);
@@ -121,7 +123,9 @@ function ProductDetail(props) {
               type="button"
               className="text-lg font-semibold text-blue-600  hover:bg-blue-600 hover:text-white px-3 py-2 border-[1px] border-blue-600 
               rounded-md transitions-theme"
-              onClick={() => handleAddItem()}
+              onClick={() =>
+                islogin ? handleAddItem(product) : toast.error("Login required")
+              }
             >
               ADD TO CART
             </button>

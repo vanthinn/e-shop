@@ -12,9 +12,12 @@ import {
 } from "firebase/auth";
 import { auth } from "../../firebase/config";
 import toast from "react-hot-toast";
+import { useDispatch } from "react-redux";
+import { SetActiveUser } from "../../app/AuthSlice";
 
 function Login(props) {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -33,6 +36,13 @@ function Login(props) {
         .then((userCredential) => {
           const user = userCredential.user;
           console.log(user);
+          const usename = user.email.split("@")[0];
+          const action = {
+            email: user.email,
+            username: usename,
+            userid: user.uid,
+          };
+          dispatch(SetActiveUser(action));
           toast.success("Log in Successfully!!");
           navigate("/");
         })
@@ -49,8 +59,15 @@ function Login(props) {
     signInWithPopup(auth, provider)
       .then((result) => {
         const user = result.user;
+        console.log(user.displayName);
         console.log(user);
         toast.success("Log in Successfully!!");
+        const action = {
+          email: user.email,
+          username: user.displayName,
+          userid: user.uid,
+        };
+        dispatch(SetActiveUser(action));
         navigate("/");
       })
       .catch((error) => {
@@ -64,9 +81,15 @@ function Login(props) {
 
     signInWithPopup(auth, provider)
       .then((result) => {
+        console.log(result);
         const user = result.user;
-        console.log(user);
         toast.success("Log in Successfully!!");
+        const action = {
+          email: user.email,
+          username: user.displayName,
+          userid: user.uid,
+        };
+        dispatch(SetActiveUser(action));
         navigate("/");
       })
       .catch((error) => {
