@@ -10,6 +10,7 @@ import Login from "./page/Login";
 import Signup from "./page/Signup";
 
 import "./App.css";
+import Checkout from "./page/Checkout";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/checkout" element={<Checkout />} />
       </Routes>
       <Footer />
     </div>

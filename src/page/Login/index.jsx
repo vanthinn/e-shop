@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaFacebookF, FaGoogle, FaTwitter } from "react-icons/fa";
 import background from "../../assets/images/rm309-adj-03.jpg";
 import { useNavigate } from "react-router-dom";
@@ -14,8 +14,10 @@ import { auth } from "../../firebase/config";
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { SetActiveUser } from "../../app/AuthSlice";
+import Loading from "../../component/Loading";
 
 function Login(props) {
+  const [isloading, setisloading] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const formik = useFormik({
@@ -32,6 +34,7 @@ function Login(props) {
     }),
 
     onSubmit: (value) => {
+      setisloading(true);
       signInWithEmailAndPassword(auth, value.email, value.password)
         .then((userCredential) => {
           const user = userCredential.user;
@@ -42,6 +45,7 @@ function Login(props) {
             username: usename,
             userid: user.uid,
           };
+          setisloading(false);
           dispatch(SetActiveUser(action));
           toast.success("Log in Successfully!!");
           navigate("/");
@@ -53,6 +57,7 @@ function Login(props) {
   });
 
   function handleLoginWithGoogle() {
+    setisloading(true);
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
       .then((result) => {
@@ -65,6 +70,7 @@ function Login(props) {
           username: user.displayName,
           userid: user.uid,
         };
+        setisloading(false);
         dispatch(SetActiveUser(action));
         navigate("/");
       })
@@ -95,6 +101,7 @@ function Login(props) {
   }
   return (
     <div>
+      {isloading && <Loading />}
       <div className="h-[60px] bg-[#333] fixed top-0 left-0 right-0 z-[100]"></div>
 
       <div

@@ -26,7 +26,7 @@ function FilterCatelog(props) {
   }
 
   return (
-    <div className="sticky top-0 flex flex-col ">
+    <div className="sticky top-[80px] flex flex-col ">
       <div className="flex justify-between text-base mb-5">
         <span className="">Filter</span>
         <span className="text-blue-600 cursor-pointer">Clear All</span>

@@ -70,7 +70,7 @@ function TrendingProduct(props) {
       <div className="mt-5 flex justify-center">
         <li
           className={`text-[18px] list-none mx-4 cursor-pointer transitions-theme hover:text-blue-500 ${
-            currentCat === "all" ? "text-blue-500" : ""
+            currentCat === "all" ? "text-blue-500" : "hover:scale-x-110 "
           }`}
           onClick={() => setcurrentCat("all")}
         >
@@ -80,7 +80,7 @@ function TrendingProduct(props) {
           <li
             key={cat}
             className={`text-[18px] list-none mx-4 cursor-pointer transitions-theme uppercase hover:text-blue-500 ${
-              currentCat === cat ? "text-blue-500" : ""
+              currentCat === cat ? "text-blue-500" : "hover:scale-x-110 "
             }`}
             onClick={() => handleChange(cat)}
           >

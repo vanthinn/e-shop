@@ -108,13 +108,15 @@ function Products(props) {
       <div className="h-[60px] bg-[#333] fixed top-0 left-0 right-0 z-[100]"></div>
       <BannerProducts />
       <div className="mx-48 mt-8 grid grid-cols-4 gap-4">
-        <FilterCatelog
-          category={category}
-          listproduct={listproduct}
-          catAtive={catAtive.current}
-          onChangeCat={handleChangeCat}
-          onChangeFilterPrice={handleFilter}
-        />
+        <div>
+          <FilterCatelog
+            category={category}
+            listproduct={listproduct}
+            catAtive={catAtive.current}
+            onChangeCat={handleChangeCat}
+            onChangeFilterPrice={handleFilter}
+          />
+        </div>
         <div className="col-span-3 ">
           <ListProduct
             listproduct={listproduct}

@@ -3,6 +3,7 @@ import toast from "react-hot-toast";
 
 const initialState = {
   cartItems: [],
+  Shipping: 0,
 };
 
 const CartSlice = createSlice({
@@ -55,6 +56,10 @@ const CartSlice = createSlice({
       }
     },
 
+    setShipping: (state, action) => {
+      state.Shipping = action.payload;
+    },
+
     ClearAll: (state, action) => {
       state.cartItems = [];
     },
@@ -68,6 +73,7 @@ export const {
   setDecreaseItem,
   GetTotal,
   ClearAll,
+  setShipping,
 } = CartSlice.actions;
 
 export default CartSlice.reducer;

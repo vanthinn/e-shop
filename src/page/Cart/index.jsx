@@ -4,13 +4,16 @@ import CartEmty from "./component/CartEmty";
 import { useDispatch, useSelector } from "react-redux";
 import CartItem from "./component/CartItem";
 import { Space, Radio } from "antd";
+import { useNavigate } from "react-router-dom";
 import {
   removeItemToCart,
   setDecreaseItem,
   SetIncreaseItem,
+  setShipping,
 } from "../../app/CartSlice";
 
 function Cart(props) {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const cartIteam = useSelector((state) => state.cart.cartItems);
   const totalAmount = useSelector((state) =>
@@ -20,7 +23,7 @@ function Cart(props) {
     }, 0)
   );
 
-  const [valueRadio, setValueRadio] = useState(1);
+  const [valueRadio, setValueRadio] = useState(0);
   const onChange = (e) => {
     console.log("radio checked", e.target.value);
     setValueRadio(e.target.value);
@@ -42,6 +45,11 @@ function Cart(props) {
     }
   }
 
+  function handleCheckoutout() {
+    dispatch(setShipping(valueRadio));
+    navigate("/checkout");
+  }
+
   return (
     <div>
       <div className="fixed top-0 left-0 right-0 h-[60px] z-[100] bg-[#333]"></div>
@@ -59,7 +67,7 @@ function Cart(props) {
               onDecreaseItem={handleDecreaseItem}
             />
           </div>
-          <div className="border-[1px] border-slate-400 bg-[#f9f9f9] px-5 text-left max-h-[500px]">
+          <div className="sticky top-[70px] border-[1px] border-slate-400 bg-[#f9f9f9] px-5 text-left max-h-[500px]">
             <h1 className="text-2xl font-semibold mt-1 py-4 border-b-[1px] border-slate-400">
               Cart Total
             </h1>
@@ -100,6 +108,7 @@ function Cart(props) {
               type="button"
               className="flex border-[1px] border-blue-600 text-blue-600 w-full text-center justify-center font-semibold my-7 py-2 text-lg rounded-md 
               hover:bg-blue-600 hover:text-white transitions-theme"
+              onClick={() => handleCheckoutout()}
             >
               Checkout
             </button>
