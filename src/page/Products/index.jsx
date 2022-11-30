@@ -2,9 +2,11 @@ import React, { useState, useEffect, useRef } from "react";
 import productApi from "../../api/productApi";
 import BannerProducts from "./component/BannerProducts";
 import FilterCatelog from "./component/FilterCatelog";
+import { useParams } from "react-router-dom";
 import ListProduct from "./component/ListProduct";
 
 function Products(props) {
+  const { title } = useParams();
   const [category, setCategory] = useState([]);
   const [listproduct, setListProduct] = useState([]);
   const catAtive = useRef("All");
@@ -14,7 +16,14 @@ function Products(props) {
     try {
       const fetchAPI = async () => {
         const response = await productApi.getAll();
-        setListProduct(response);
+        if (title) {
+          const tmp = response.filter(
+            (product) => product.title.indexOf(`${title}`) >= 0
+          );
+          setListProduct(tmp);
+        } else {
+          setListProduct(response);
+        }
         setIsloading(false);
       };
       fetchAPI();
@@ -43,7 +52,7 @@ function Products(props) {
 
   useEffect(() => {
     fetchProductList();
-  }, []);
+  }, [title]);
 
   useEffect(() => {
     fetchCategoryList();

@@ -6,6 +6,8 @@ import { auth } from "../../firebase/config";
 import toast from "react-hot-toast";
 import { RemoveActiveUser } from "../../app/AuthSlice";
 import { ClearAll } from "../../app/CartSlice";
+import productApi from "../../api/productApi";
+import ItemSearch from "../ItemSearch";
 
 const mainNav = [
   {
@@ -28,6 +30,8 @@ function Header(props) {
   const islogin = useSelector((state) => state.auth.isLogin);
   const [navState, setNavState] = useState(false);
   const [displayName, setdisplayName] = useState("");
+  const [valuesSearch, setValuesSearch] = useState("");
+  const [listproduct, setListProduct] = useState([]);
   const { pathname } = useLocation();
   const activeNav = mainNav.findIndex((e) => e.path === pathname);
   const navigate = useNavigate();
@@ -74,8 +78,30 @@ function Header(props) {
     });
   }, [username]);
 
-  console.log(islogin);
-  console.log(username);
+  function handleSearch() {
+    navigate(`/products/search${valuesSearch}`);
+  }
+
+  useEffect(() => {
+    try {
+      const fetchAPI = async () => {
+        const response = await productApi.getAll();
+        if (valuesSearch) {
+          const tmp = response.filter(
+            (product) => product.title.indexOf(`${valuesSearch}`) >= 0
+          );
+          setListProduct(tmp);
+        }
+      };
+      fetchAPI();
+    } catch (e) {
+      console.log(e);
+    }
+  }, [valuesSearch]);
+
+  function handleChange(e) {
+    setValuesSearch(e.target.value);
+  }
 
   return (
     <div
@@ -110,12 +136,40 @@ function Header(props) {
       </div>
 
       <div className="flex items-center mr-[50px] ">
-        <div className="relative mx-4">
+        <div className="relative mx-4 w-[400px]">
           <input
             type="text"
-            className=" text-white text-base bg-transparent border-b-[2px] outline-none placeholder:text-slate-50 placeholder:pl-2 placeholder:text-[15px]"
+            className=" text-white w-full text-base bg-transparent border-b-[2px] outline-none placeholder:text-slate-50 placeholder:pl-2 placeholder:text-[15px]"
             placeholder="Search product..."
+            value={valuesSearch}
+            onChange={(e) => handleChange(e)}
+            onKeyPress={(e) => {
+              e.key === "Enter" && handleSearch();
+            }}
           />
+          {valuesSearch && (
+            <div className="flex absolute top-[120%] flex-col w-full bg-white text-slate-700 rounded overflow-hidden shadow-2xl ">
+              {listproduct.map((product, index) => {
+                if (index < 3) {
+                  return (
+                    <ItemSearch
+                      key={index}
+                      id={product.id}
+                      image={product.image}
+                      title={product.title}
+                      price={product.price}
+                    />
+                  );
+                }
+              })}
+              <h2
+                className="text-left px-2 py-3 text-base cursor-pointer hover:bg-slate-300/20 "
+                onClick={() => handleSearch()}
+              >
+                View result of "{valuesSearch}"
+              </h2>
+            </div>
+          )}
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"

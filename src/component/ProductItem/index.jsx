@@ -8,13 +8,12 @@ import toast from "react-hot-toast";
 function ProductItem(props) {
   const navigate = useNavigate();
   const islogin = useSelector((state) => state.auth.isLogin);
-  console.log(islogin);
   const dispatch = useDispatch();
   const { product } = props;
   const { id, title, price, image, rating } = product;
 
   function handleClick() {
-    navigate(`/products/${id}`);
+    navigate(`/products/idproduct${id}`);
     window.scrollTo(0, 0);
   }
 
