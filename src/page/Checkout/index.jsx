@@ -1,5 +1,4 @@
 import React from "react";
-import BannerCheckout from "./Component/BannerCheckout";
 import FromCheckout from "./Component/FromCheckout";
 import OrderTotal from "./Component/OrderTotal";
 import { useFormik } from "formik";
@@ -9,6 +8,7 @@ import productApi from "../../api/productApi";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { ClearAll } from "../../app/CartSlice";
+import Banner from "../../component/Banner";
 
 function Checkout(props) {
   const navigate = useNavigate();
@@ -52,7 +52,7 @@ function Checkout(props) {
   return (
     <div>
       <div className="fixed top-0 left-0 right-0 h-[60px] z-[100] bg-[#333]"></div>
-      <BannerCheckout />
+      <Banner title="Checkout" />
 
       <form
         action=""

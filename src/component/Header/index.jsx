@@ -80,6 +80,7 @@ function Header(props) {
 
   function handleSearch() {
     navigate(`/products/search${valuesSearch}`);
+    setValuesSearch("");
   }
 
   useEffect(() => {
@@ -103,6 +104,10 @@ function Header(props) {
     setValuesSearch(e.target.value);
   }
 
+  function hanldeClickSetstate() {
+    setValuesSearch("");
+  }
+
   return (
     <div
       className={`fixed top-0 left-0 right-0 flex justify-between items-center h-[60px] w-[100%] z-[200] text-white px-8
@@ -116,6 +121,7 @@ function Header(props) {
             className=" h-[30px] pr-8 cursor-pointer"
             src="https://d-themes.com/react/molla/demo-5/images/logo.png"
             alt=""
+            onClick={() => navigate("/")}
           />
         </div>
 
@@ -158,6 +164,7 @@ function Header(props) {
                       image={product.image}
                       title={product.title}
                       price={product.price}
+                      onClickSetstate={hanldeClickSetstate}
                     />
                   );
                 }

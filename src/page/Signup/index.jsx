@@ -29,7 +29,6 @@ function Signup(props) {
       createUserWithEmailAndPassword(auth, value.email, value.password)
         .then((userCredential) => {
           const user = userCredential.user;
-          console.log(user);
           toast.success("Sign up Successfully!!");
           navigate("/login");
         })

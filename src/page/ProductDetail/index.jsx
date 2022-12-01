@@ -9,29 +9,38 @@ import ProductItem from "../../component/ProductItem";
 import { useDispatch, useSelector } from "react-redux";
 import { addItemToCart } from "../../app/CartSlice";
 import toast from "react-hot-toast";
+import ProductSkeleton from "../../component/ProductSkeleton";
 
 function ProductDetail(props) {
   const dispatch = useDispatch();
-  const islogin = useSelector((state) => state.auth.isLogin);
   const { idproduct } = useParams();
+  const islogin = useSelector((state) => state.auth.isLogin);
   const [product, setProduct] = useState({});
   const [productList, setProductList] = useState([]);
   const [countProduct, setCountProduct] = useState(1);
+  const [isloading, setisloading] = useState(true);
+
   useEffect(() => {
     const fetchProduct = async () => {
       const response = await productApi.getProduct(idproduct);
       setProduct(response);
     };
     fetchProduct();
-  }, [product]);
+  }, [idproduct]);
 
   useEffect(() => {
-    const fetchProductList = async () => {
-      const response = await productApi.getProductByCategory(product.category);
-      const list = response.filter((pr) => pr.id != idproduct);
-      setProductList(list);
-    };
-    fetchProductList();
+    setisloading(true);
+    try {
+      const fetchProductList = async () => {
+        const response = await productApi.getProductByCategory(
+          product.category
+        );
+        const list = response.filter((pr) => pr.id != idproduct);
+        setisloading(false);
+        setProductList(list);
+      };
+      fetchProductList();
+    } catch (error) {}
   }, [product]);
 
   function handleAddItem() {
@@ -153,6 +162,11 @@ function ProductDetail(props) {
       <div className="my-14 mx-48">
         <h1 className="text-4xl font-semibold mb-5">You May Also Like</h1>
         <Splide options={splideOptions}>
+          {isloading && (
+            <SplideSlide>
+              <ProductSkeleton count={1} />
+            </SplideSlide>
+          )}
           {productList.map((product) => (
             <SplideSlide key={product.id}>
               <ProductItem product={product} />

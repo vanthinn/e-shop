@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import BannerCart from "./component/BannerCart";
 import CartEmty from "./component/CartEmty";
 import { useDispatch, useSelector } from "react-redux";
 import CartItem from "./component/CartItem";
@@ -11,6 +10,7 @@ import {
   SetIncreaseItem,
   setShipping,
 } from "../../app/CartSlice";
+import Banner from "../../component/Banner";
 
 function Cart(props) {
   const navigate = useNavigate();
@@ -53,7 +53,7 @@ function Cart(props) {
   return (
     <div>
       <div className="fixed top-0 left-0 right-0 h-[60px] z-[100] bg-[#333]"></div>
-      <BannerCart />
+      <Banner title="Cart" />
 
       {cartIteam.length === 0 ? (
         <CartEmty />
