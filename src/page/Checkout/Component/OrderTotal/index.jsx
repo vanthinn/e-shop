@@ -34,7 +34,7 @@ function OrderTotal(props) {
       </div>
       <div className=" flex justify-between text-lg mt-4 ">
         <h2 className="">Subtotal</h2>
-        <span>${totalAmount}</span>
+        <span>${Math.round(totalAmount * 100) / 100}</span>
       </div>
       <div className=" flex justify-between text-lg mt-4 pt-4 border-t-[1px] border-slate-400/40 ">
         <h2 className="">Shipping</h2>

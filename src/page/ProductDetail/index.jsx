@@ -77,7 +77,7 @@ function ProductDetail(props) {
       <div className="app-container mt-[60px] md:grid grid-cols-2 gap-8 ">
         <div className="flex relative justify-center">
           <img
-            className="mg-auto px-8 py-8 h-[500px]"
+            className="mg-auto px-8 py-8 sm:min-h-[350px] md:min-h-[500px]"
             src={product.image}
             alt=""
           />

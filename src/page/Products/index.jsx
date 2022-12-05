@@ -129,7 +129,7 @@ function Products(props) {
         <div className="app-container lg:px-32 py-8 grid lg:grid-cols-4 gap-4">
           <div
             className={`sm:fixed sm:top-0 sm:left-0 sm:bottom-0 sm:bg-white sm:min-h-[100vh] sm:z-[200]
-            sm:w-[450px] sm:px-8 transition-all duration-1000 ease-in-out ${
+            sm:w-[350px] md:w-[450px] sm:px-8 transition-all duration-1000 ease-in-out ${
               catelogmobile ? "sm:translate-x-0" : "sm:translate-x-[-100%]"
             }
             lg:block lg:relative lg:w-auto lg:h-auto lg:px-0 lg:z-[1] lg:sm:translate-x-0`}

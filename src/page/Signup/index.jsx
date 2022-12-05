@@ -45,7 +45,7 @@ function Signup(props) {
         style={{ backgroundImage: `url(${background})` }}
         className="mt-[60px] min-h-[550px] py-12 flex"
       >
-        <div className=" m-auto flex flex-col justify-content items-start border-[1px] px-12 py-8 min-w-[450px] rounded-xl bg-slate-50">
+        <div className=" m-auto flex flex-col justify-content items-start border-[1px] sm:px-4 sm:min-w-[350px]  md:px-12 py-8 md:min-w-[450px] rounded-xl bg-slate-50">
           <h1
             before=""
             className="text-3xl font-semibold uppercase text-slate-600 relative before:content-[attr(before)] before:bottom-0 before:absolute 

@@ -47,6 +47,7 @@ function Checkout(props) {
       });
       dispatch(ClearAll());
       navigate("/products");
+      window.scrollTo(0, 0);
     },
   });
   return (
@@ -55,10 +56,10 @@ function Checkout(props) {
       <Banner title="Checkout" />
       <form
         action=""
-        className="app-container lg:px-36 my-10 md:grid grid-cols-3 gap-6"
+        className="app-container lg:px-36 my-10 lg:grid grid-cols-3 gap-6 "
         onSubmit={formik.handleSubmit}
       >
-        <div className="col-span-2">
+        <div className="col-span-2 sm:mt-4 lg:mt-0">
           <FromCheckout
             firstname={formik.values.firstname}
             lastname={formik.values.lastname}

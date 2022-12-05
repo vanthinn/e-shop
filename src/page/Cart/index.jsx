@@ -58,7 +58,7 @@ function Cart(props) {
       {cartIteam.length === 0 ? (
         <CartEmty />
       ) : (
-        <div className="app-container lg:px-36 my-10 md:grid grid-cols-3 gap-5  ">
+        <div className="app-container lg:px-36 my-10 lg:grid grid-cols-3 gap-5  ">
           <div className="col-span-2">
             <CartItem
               cartItem={cartIteam}
@@ -67,7 +67,7 @@ function Cart(props) {
               onDecreaseItem={handleDecreaseItem}
             />
           </div>
-          <div className="sticky top-[70px] border-[1px] border-slate-400 bg-[#f9f9f9] px-5 text-left max-h-[500px] sm:mt-4 md:mt-0">
+          <div className="sticky top-[70px] border-[1px] border-slate-400 bg-[#f9f9f9] px-5 text-left max-h-[500px] sm:mt-4 lg:mt-0">
             <h1 className="text-2xl font-semibold mt-1 py-4 border-b-[1px] border-slate-400">
               Cart Total
             </h1>

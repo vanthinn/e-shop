@@ -137,7 +137,10 @@ function Header(props) {
             className="h-[80%] sm:w-[65%]  lg:w-[75%] lg:pr-8 cursor-pointer object-contain "
             src="https://d-themes.com/react/molla/demo-5/images/logo.png"
             alt=""
-            onClick={() => navigate("/")}
+            onClick={() => {
+              navigate("/");
+              window.scrollTo(0, 0);
+            }}
           />
         </div>
         <div className="w-[90%] flex sm:justify-end lg:justify-between lg:items-center ">

@@ -64,6 +64,7 @@ function NavMobile(props) {
           "
             onClick={() => {
               navigate(`/products/search${valuesSearch}`);
+              window.scrollTo(0, 0);
               onClosenav();
             }}
           />
@@ -72,6 +73,7 @@ function NavMobile(props) {
           className="text-xl text-left mt-4 pb-1 hover:text-blue-600 cursor-pointer transitions-theme border-b-[1px] border-slate-600"
           onClick={() => {
             navigate("/home");
+            window.scrollTo(0, 0);
             onClosenav();
           }}
         >
@@ -81,6 +83,7 @@ function NavMobile(props) {
           className="text-xl text-left mt-4 pb-1 hover:text-blue-600 cursor-pointer transitions-theme border-b-[1px] border-slate-600"
           onClick={() => {
             navigate("/products");
+            window.scrollTo(0, 0);
             onClosenav();
           }}
         >
@@ -90,6 +93,7 @@ function NavMobile(props) {
           className="text-xl text-left mt-4 pb-1 hover:text-blue-600 cursor-pointer transitions-theme border-b-[1px] border-slate-600"
           onClick={() => {
             navigate("/contact");
+            window.scrollTo(0, 0);
             onClosenav();
           }}
         >
@@ -102,6 +106,7 @@ function NavMobile(props) {
             className="mt-12 bg-blue-600 py-2 text-lg rounded-lg"
             onClick={() => {
               navigate("/login");
+              window.scrollTo(0, 0);
               onClosenav();
             }}
           >
