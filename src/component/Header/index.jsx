@@ -123,7 +123,7 @@ function Header(props) {
     <>
       <NavMobile onClosenav={handleclosenav} ismoble={ismoble} />
       <div
-        className={` xl:w-full fixed top-0 left-0 right-0 flex items-center h-[60px] z-[200] text-white px-8
+        className={` app-container w-full px-7    fixed top-0 left-0 right-0 flex items-center h-[60px] z-[200] text-white 
        transition-color duration-500 ${
          navState ? "bg-[#333] animate-navbar" : "bg-transparent"
        }`}
