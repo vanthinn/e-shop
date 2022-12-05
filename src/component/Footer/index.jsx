@@ -2,8 +2,8 @@ import React from "react";
 
 function Footer(props) {
   return (
-    <div className="mx-48 mt-4">
-      <div className="grid grid-cols-2 gap-4 mb-3">
+    <div className="sm:app-container pt-4">
+      <div className="grid md:grid-cols-2 gap-4 mb-3">
         <div className="flex flex-col justify-start items-start">
           <img
             src="https://d-themes.com/react/molla/demo-5/images/logo-footer.png"

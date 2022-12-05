@@ -25,15 +25,14 @@ function Brand(props) {
     padding: "1rem",
     arrows: false,
     breakpoints: {
-      1200: { perPage: 6 },
-      991: { perPage: 4 },
-      768: { perPage: 3 },
-      500: { perPage: 2 },
-      425: { perPage: 1 },
+      1280: { perPage: 6 },
+      1024: { perPage: 4 },
+      736: { perPage: 3 },
+      375: { perPage: 2 },
     },
   };
   return (
-    <div className="app-container">
+    <div className="app-container mt-5 mb-7">
       <Splide options={splideOptions}>
         {brands.map((brand, index) => (
           <SplideSlide key={index} className="overflow-hidden">

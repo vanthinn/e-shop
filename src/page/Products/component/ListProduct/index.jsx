@@ -24,6 +24,8 @@ function ListProduct(props) {
     onSortPrice(value);
   }
 
+  const x = window.screen.width;
+
   // function handleSortMostRate(value) {
   //   onSortMostRate(value);
   // }
@@ -71,8 +73,8 @@ function ListProduct(props) {
         </div>
       </div>
 
-      <div className=" mt-5 grid grid-cols-3 gap-3">
-        {isloading && <ProductSkeleton count={9} />}
+      <div className=" mt-5 grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {isloading && <ProductSkeleton count={736 < x < 1024 ? 8 : 9} />}
         {currentItems.map((product) => (
           <div>
             <ProductItem product={product} />

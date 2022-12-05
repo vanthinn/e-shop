@@ -8,14 +8,16 @@ function VideoBanner(props) {
   };
   return (
     <div
-      className="flex h-[80vh] bg-no-repeat bg-cover  "
+      className="flex min-h-[80vh] bg-no-repeat bg-cover "
       style={{
         backgroundImage: `url("${"https://d-themes.com/react/molla/demo-5/images/home/bg-2.jpg"}")`,
       }}
     >
       <div className="m-auto text-center text-slate-50">
         <span className="text-2xl">NEW COLLECTION</span>
-        <h3 className="text-6xl text-slate-50 my-5">Winter’19 / Spring’20</h3>
+        <h3 className="sm:text-5xl md:text-6xl text-slate-50 my-5">
+          Winter’19 / Spring’20
+        </h3>
 
         <button className="relative group" onClick={handleSetShow}>
           <div className="">

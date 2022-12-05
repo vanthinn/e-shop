@@ -2,8 +2,14 @@ import React, { useState } from "react";
 import { FaAngleDown } from "react-icons/fa";
 
 function FilterCatelog(props) {
-  const { category, listproduct, onChangeCat, catAtive, onChangeFilterPrice } =
-    props;
+  const {
+    category,
+    listproduct,
+    onChangeCat,
+    catAtive,
+    onChangeFilterPrice,
+    oncloseCatmb,
+  } = props;
   const [showcatelog, setShowcatelog] = useState(true);
   const [showprice, setShowprice] = useState(true);
 
@@ -19,15 +25,17 @@ function FilterCatelog(props) {
 
   function handleChangeCat(cat = "All") {
     onChangeCat(cat);
+    oncloseCatmb();
   }
 
   function handleFilter(FromPrice, ToPrice) {
     onChangeFilterPrice(FromPrice, ToPrice);
+    oncloseCatmb();
   }
 
   return (
     <div className="sticky top-[80px] flex flex-col ">
-      <div className="flex justify-between text-base mb-5">
+      <div className="flex justify-between sm:text-xl lg:text-base sm:mb-8 lg:mb-5">
         <span className="">Filter</span>
         <span className="text-blue-600 cursor-pointer">Clear All</span>
       </div>

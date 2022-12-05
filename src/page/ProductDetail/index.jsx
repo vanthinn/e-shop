@@ -66,17 +66,15 @@ function ProductDetail(props) {
     padding: "1rem",
     arrows: true,
     breakpoints: {
-      1200: { perPage: 4 },
-      991: { perPage: 3 },
-      768: { perPage: 2 },
-      500: { perPage: 1 },
-      425: { perPage: 1 },
+      1280: { perPage: 4 },
+      1024: { perPage: 2 },
+      736: { perPage: 1 },
     },
   };
   return (
     <div className="">
       <div className="fixed top-0 left-0 right-0 h-[60px] bg-[#333] z-[100]"></div>
-      <div className="mx-48 mt-[60px] grid grid-cols-2 gap-8 ">
+      <div className="app-container mt-[60px] md:grid grid-cols-2 gap-8 ">
         <div className="flex relative justify-center">
           <img
             className="mg-auto px-8 py-8 h-[500px]"
@@ -89,7 +87,7 @@ function ProductDetail(props) {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="w-8 h-8 p-1 absolute bottom-[3%] right-[7%] rounded-md text-slate-400 cursor-pointer bg-slate-200 "
+            className="w-8 h-8 p-1 absolute md:bottom-2 sm:right-0 sm:bottom-0 md:right-2 lg:bottom-[3%] lg:right-[7%] rounded-md text-slate-400 cursor-pointer bg-slate-200 "
           >
             <path
               strokeLinecap="round"
@@ -159,7 +157,7 @@ function ProductDetail(props) {
         </div>
       </div>
 
-      <div className="my-14 mx-48">
+      <div className="my-14 app-container">
         <h1 className="text-4xl font-semibold mb-5">You May Also Like</h1>
         <Splide options={splideOptions}>
           {isloading && (

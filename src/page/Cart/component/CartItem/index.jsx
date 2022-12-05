@@ -29,17 +29,17 @@ function CartItem(props) {
           key={item.id}
           className="py-1 flex items-center border-b-[1px] border-stone-900 h-[125px]"
         >
-          <div className="w-[10%] ">
+          <div className="w-[10%]  ">
             <img
               className="h-[90%] object-contain p-2 cursor-pointer"
               src={item.image}
               alt=""
-              onClick={() => navigate(`/products/${item.id}`)}
+              onClick={() => navigate(`/products/idproduct${item.id}`)}
             />
           </div>
           <h1
             className="w-[30%] text-base text-left px-5 cursor-pointer "
-            onClick={() => navigate(`/products/${item.id}`)}
+            onClick={() => navigate(`/products/idproduct${item.id}`)}
           >
             {item.title}
           </h1>
@@ -52,7 +52,7 @@ function CartItem(props) {
               >
                 -
               </span>
-              <span className="mx-4">{item.cartQuantity}</span>
+              <span className="sm:mx-2 lg:mx-4">{item.cartQuantity}</span>
               <span
                 className="cursor-pointer hover:scale-125"
                 onClick={() => handleIncreaseItem(item)}

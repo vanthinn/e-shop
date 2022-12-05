@@ -15,9 +15,11 @@ function BannerItem({
   };
   return (
     <div className="h-[100vh] relative items-center" style={styleBackground}>
-      <div className="absolute top-[30%] left-[32%] text-center">
-        <span className="text-white text-3xl text-light ">{topSuggest}</span>
-        <h1 className="text-white text-8xl mb-5"> {title}</h1>
+      <div className="absolute top-[50%] translate-y-[-50%] left-0 right-0  mx-auto ">
+        <span className="text-white sm:text-[28px] md:text-3xl text-light ">
+          {topSuggest}
+        </span>
+        <h1 className="text-white sm:text-7xl md:text-8xl mb-5"> {title}</h1>
         <span className="text-white text-3xl text-light block">
           {bottomSuggest}
         </span>

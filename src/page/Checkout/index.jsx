@@ -53,10 +53,9 @@ function Checkout(props) {
     <div>
       <div className="fixed top-0 left-0 right-0 h-[60px] z-[100] bg-[#333]"></div>
       <Banner title="Checkout" />
-
       <form
         action=""
-        className="mx-48 my-10 grid grid-cols-3 gap-6"
+        className="app-container lg:px-36 my-10 md:grid grid-cols-3 gap-6"
         onSubmit={formik.handleSubmit}
       >
         <div className="col-span-2">

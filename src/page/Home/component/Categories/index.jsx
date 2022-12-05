@@ -17,7 +17,7 @@ const categories = [
 
 function Categories(props) {
   return (
-    <div className="relative grid grid-cols-2 gap-5 mt-8 mx-48 min-h-[650px] overflow-hidden">
+    <div className="sm:app-container relative grid md:grid-cols-2 gap-5 min-h-[650px] overflow-hidden">
       <CategoryItem
         vertical
         img={categories[0].img}

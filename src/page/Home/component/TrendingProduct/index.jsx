@@ -56,17 +56,16 @@ function TrendingProduct(props) {
     padding: "1rem",
     arrows: true,
     breakpoints: {
-      1200: { perPage: 4 },
-      991: { perPage: 3 },
-      768: { perPage: 2 },
-      500: { perPage: 1 },
-      425: { perPage: 1 },
+      1280: { perPage: 4 },
+      1024: { perPage: 2 },
+      736: { perPage: 1 },
+      375: { perPage: 1 },
     },
   };
 
   return (
-    <div className="mt-16 flex flex-col mx-48">
-      <h1 className="text-4xl">Trendy Products</h1>
+    <div className=" sm:app-container flex flex-col ">
+      <h1 className="text-4xl mt-16">Trendy Products</h1>
       <div className="mt-5 flex justify-center">
         <li
           className={`text-[18px] list-none mx-4 cursor-pointer transitions-theme hover:text-blue-500 ${
@@ -79,7 +78,7 @@ function TrendingProduct(props) {
         {category.map((cat) => (
           <li
             key={cat}
-            className={`text-[18px] list-none mx-4 cursor-pointer transitions-theme uppercase hover:text-blue-500 ${
+            className={`sm:text-[16px] md:text-[18px] list-none mx-4 cursor-pointer transitions-theme uppercase hover:text-blue-500 ${
               currentCat === cat ? "text-blue-500" : "hover:scale-x-110 "
             }`}
             onClick={() => handleChange(cat)}

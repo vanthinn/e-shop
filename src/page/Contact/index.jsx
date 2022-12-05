@@ -6,7 +6,6 @@ function Contact(props) {
   return (
     <div>
       <div className="fixed top-0 right-0 left-0 h-[60px] bg-[#333] z-[100]"></div>
-
       <ContactForm />
       <Location />
     </div>

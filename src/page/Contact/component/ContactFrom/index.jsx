@@ -30,23 +30,23 @@ function ContactForm(props) {
     },
   });
   return (
-    <div className="mx-48 mt-20">
-      <h1 className="text-3xl font-semibold ">Get In Touch</h1>
-      <h4 className="mt-4 text-base text-blue-700">
+    <div className="app-container lg:px-36 pt-32">
+      <h1 className="text-4xl font-semibold ">Get In Touch</h1>
+      <h4 className="mt-4 text-lg text-blue-700">
         We collaborate with ambitious brands and people. We’d love to build
         something great together.
       </h4>
-      <p className="px-24 mt-2 font-thin">
+      <p className="lg:px-44 mt-2 font-thin">
         Vestibulum volutpat, lacus a ultrices sagittis, mi neque euismod dui, eu
         pulvinar nunc sapien ornare nisl. Phasellus pede arcu, dapibus eu,
         fermentum et, dapibus sed, urna.
       </p>
       <form
-        className="mt-4 px-44 flex flex-col justify-center gap-4 "
+        className="mt-4 lg:px-44 flex flex-col justify-center gap-4 "
         onSubmit={formik.handleSubmit}
       >
-        <div className="flex justify-between gap-2">
-          <div className="flex flex-col items-start">
+        <div className="grid md:grid-cols-3 md:justify-between sm:gap-4 md:gap-8">
+          <div className="flex flex-col items-start w-full ">
             <label className="mb-1 text-base text-gray-500 font-thin">
               Name *
             </label>
@@ -56,7 +56,7 @@ function ContactForm(props) {
               name="name"
               value={formik.values.name}
               onChange={formik.handleChange}
-              className={`border-[1px] w-[100%] p-3 ${
+              className={`border-[1px] w-full p-3 ${
                 formik.errors.name && formik.touched.name
                   ? "border-red-500"
                   : ""
@@ -66,7 +66,7 @@ function ContactForm(props) {
               <p className="error-message"> {formik.errors.name} </p>
             )}
           </div>
-          <div className="flex flex-col items-start">
+          <div className="flex flex-col items-start w-full ">
             <label className="mb-1 text-base text-gray-500 font-thin">
               Email *
             </label>
@@ -86,7 +86,7 @@ function ContactForm(props) {
               <p className="error-message"> {formik.errors.email} </p>
             )}
           </div>
-          <div className="flex flex-col items-start">
+          <div className="flex flex-col items-start w-full ">
             <label className="mb-1 text-base text-gray-500 font-thin">
               Phone Number
             </label>

@@ -8,8 +8,8 @@ import {
 
 function Social(props) {
   return (
-    <div className="grid grid-cols-2 gap-8 mx-48 my-16 ">
-      <div className="">
+    <div className="sm:app-container  grid lg:grid-cols-2 gap-8   ">
+      <div className="mt-16">
         <h1 className=" text-3xl font-semibold text-slate-900 mb-2">
           Shop Social
         </h1>
@@ -35,7 +35,7 @@ function Social(props) {
         </div>
       </div>
 
-      <div className="">
+      <div className="mt-16">
         <h1 className=" text-3xl font-semibold text-slate-900 mb-2 ">
           Get the Latest Deals
         </h1>
@@ -44,7 +44,7 @@ function Social(props) {
           first shopping
         </p>
 
-        <div className="relative">
+        <div className="relative mb-16">
           <input
             className=" mt-10  w-[70%] py-2 pl-6 text-lg border-[1px] border-slate-600 rounded-[50px] outline-none focus:border-blue-500 
             placeholder:text-base"
