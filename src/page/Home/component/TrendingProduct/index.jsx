@@ -64,11 +64,11 @@ function TrendingProduct(props) {
   };
 
   return (
-    <div className=" sm:app-container flex flex-col ">
+    <div className="sm:app-container flex flex-col ">
       <h1 className="text-4xl mt-16">Trendy Products</h1>
-      <div className="mt-5 flex justify-center">
+      <div className="mt-5 flex justify-center sm:hidden md:block">
         <li
-          className={`text-[18px] list-none mx-4 cursor-pointer transitions-theme hover:text-blue-500 ${
+          className={`text-[12px] list-none mx-4 cursor-pointer transitions-theme hover:text-blue-500 ${
             currentCat === "all" ? "text-blue-500" : "hover:scale-x-110 "
           }`}
           onClick={() => setcurrentCat("all")}
@@ -78,7 +78,7 @@ function TrendingProduct(props) {
         {category.map((cat) => (
           <li
             key={cat}
-            className={`sm:text-[16px] md:text-[18px] list-none mx-4 cursor-pointer transitions-theme uppercase hover:text-blue-500 ${
+            className={`sm:text-[12px] md:text-[18px] list-none mx-4 cursor-pointer transitions-theme uppercase hover:text-blue-500 ${
               currentCat === cat ? "text-blue-500" : "hover:scale-x-110 "
             }`}
             onClick={() => handleChange(cat)}
