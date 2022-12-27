@@ -42,7 +42,13 @@ const routepath = [
 
 function Footer(props) {
   const { pathname } = useLocation();
-  const checknotfound = routepath.find((item) => item.path === pathname);
+  let checknotfound = routepath.find((item) => item.path === pathname);
+  if (routepath[8].path == pathname.slice(0, pathname.lastIndexOf("/"))) {
+    checknotfound = routepath[8];
+  }
+  if (routepath[3].path == pathname.slice(0, pathname.lastIndexOf("/"))) {
+    checknotfound = routepath[3];
+  }
   return (
     <div className={`sm:app-container pt-4 ${checknotfound ? "" : "hidden"}`}>
       <div className="grid md:grid-cols-2 gap-4 mb-3">

@@ -77,7 +77,7 @@ function ProductDetail(props) {
       <div className="app-container mt-[60px] md:grid grid-cols-2 gap-8 ">
         <div className="flex relative justify-center">
           <img
-            className="mg-auto px-8 py-8 sm:min-h-[350px] md:min-h-[500px]"
+            className="m-auto px-8 py-8 sm:min-h-[350px] md:max-h-[450px] xl:max-h-[600px]"
             src={product.image}
             alt=""
           />
@@ -125,10 +125,10 @@ function ProductDetail(props) {
             </span>
           </div>
 
-          <div className=" mb-9">
+          <div className=" mb-9 flex sm:flex-col sm:gap-4 sm:align-start md:flex-row ">
             <button
               type="button"
-              className="text-lg font-semibold text-blue-600  hover:bg-blue-600 hover:text-white px-3 py-2 border-[1px] border-blue-600 
+              className="sm:text-lg md:text-[17px] xl:text-lg font-semibold text-blue-600  hover:bg-blue-600 hover:text-white px-3 py-2 border-[1px] border-blue-600 
               rounded-md transitions-theme"
               onClick={() =>
                 islogin ? handleAddItem(product) : toast.error("Login required")
@@ -139,7 +139,7 @@ function ProductDetail(props) {
             <button
               type="button"
               disabled
-              className=" ml-5 text-lg font-semibold text-white bg-blue-600  hover:bg-white hover:text-blue-600 px-3 py-2 border-[1px] border-blue-600 
+              className=" md:ml-0 sm:ml-0 xl:ml-5 sm:text-lg md:text-[17px] xl:text-lg font-semibold text-white bg-blue-600  hover:bg-white hover:text-blue-600 px-3 py-2 border-[1px] border-blue-600 
               rounded-md transitions-theme"
             >
               ADD TO WISHLIST
@@ -158,7 +158,7 @@ function ProductDetail(props) {
       </div>
 
       <div className="my-14 app-container">
-        <h1 className="text-4xl font-semibold mb-5">You May Also Like</h1>
+        <h1 className="text-4xl font-semibold mb-5 ">You May Also Like</h1>
         <Splide options={splideOptions}>
           {isloading && (
             <SplideSlide>
