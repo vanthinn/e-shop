@@ -13,7 +13,7 @@ function ProductItem(props) {
   const { id, title, price, image, rating } = product;
 
   function handleClick() {
-    navigate(`/products/idproduct${id}`);
+    navigate(`/products/idproduct/${id}`);
     window.scrollTo(0, 0);
   }
 

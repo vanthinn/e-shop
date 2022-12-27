@@ -66,9 +66,9 @@ function TrendingProduct(props) {
   return (
     <div className="sm:app-container flex flex-col ">
       <h1 className="text-4xl mt-16">Trendy Products</h1>
-      <div className="mt-5 flex justify-center sm:hidden md:block">
+      <div className="mt-5 md:flex justify-center sm:hidden">
         <li
-          className={`text-[12px] list-none mx-4 cursor-pointer transitions-theme hover:text-blue-500 ${
+          className={`text-[12px] md:text-[18px] list-none mx-4 cursor-pointer transitions-theme hover:text-blue-500 ${
             currentCat === "all" ? "text-blue-500" : "hover:scale-x-110 "
           }`}
           onClick={() => setcurrentCat("all")}
@@ -88,7 +88,7 @@ function TrendingProduct(props) {
         ))}
       </div>
 
-      <div className="my-10">
+      <div className="my-10 xl:mx-36">
         <Splide options={splideOptions}>
           {isloading && (
             <SplideSlide>

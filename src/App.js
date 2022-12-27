@@ -11,6 +11,7 @@ import Signup from "./page/Signup";
 
 import "./App.css";
 import Checkout from "./page/Checkout";
+import NotFound from "./component/NotFound";
 
 function App() {
   return (
@@ -20,9 +21,9 @@ function App() {
         <Route path="/" element={<Navigate replace to="/home" />} />
         <Route path="/home" element={<Home />} />
         <Route path="/products" element={<Products />} />
-        <Route path="/products/search:title" element={<Products />} />
+        <Route path="/products/search/:title" element={<Products />} />
         <Route
-          path="/products/idproduct:idproduct"
+          path="/products/idproduct/:idproduct"
           element={<ProductDetail />}
         />
         <Route path="/contact" element={<Contact />} />
@@ -30,6 +31,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/checkout" element={<Checkout />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
     </div>

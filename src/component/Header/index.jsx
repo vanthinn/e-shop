@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link, useNavigate, useLocation, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../../firebase/config";
@@ -25,6 +25,44 @@ const mainNav = [
     path: "/contact",
   },
 ];
+const routepath = [
+  {
+    id: 1,
+    path: "/home",
+  },
+  {
+    id: 2,
+    path: "/products",
+  },
+  {
+    id: 3,
+    path: "/contact",
+  },
+  {
+    id: 4,
+    path: "/products/search",
+  },
+  {
+    id: 5,
+    path: "/cart",
+  },
+  {
+    id: 6,
+    path: "/login",
+  },
+  {
+    id: 7,
+    path: "/signup",
+  },
+  {
+    id: 8,
+    path: "/checkout",
+  },
+  {
+    id: 9,
+    path: "/products/idproduct",
+  },
+];
 
 function Header(props) {
   const dispatch = useDispatch();
@@ -37,6 +75,13 @@ function Header(props) {
   const [ismoble, setismoble] = useState(false);
   const { pathname } = useLocation();
   const activeNav = mainNav.findIndex((e) => e.path === pathname);
+  let checknotfound = routepath.find((item) => item.path === pathname);
+  if (routepath[8].path == pathname.slice(0, pathname.lastIndexOf("/"))) {
+    checknotfound = routepath[8];
+  }
+  if (routepath[3].path == pathname.slice(0, pathname.lastIndexOf("/"))) {
+    checknotfound = routepath[3];
+  }
   const navigate = useNavigate();
   const totalQuantityItems = useSelector((state) =>
     state.cart.cartItems.reduce((total, cartItem) => {
@@ -85,7 +130,7 @@ function Header(props) {
     if (valuesSearch == "") {
       navigate(`/products`);
     } else {
-      navigate(`/products/search${valuesSearch}`);
+      navigate(`/products/search/${valuesSearch}`);
     }
     setValuesSearch("");
   }
@@ -126,7 +171,8 @@ function Header(props) {
         className={` app-container w-full px-7    fixed top-0 left-0 right-0 flex items-center h-[60px] z-[200] text-white 
        transition-color duration-500 ${
          navState ? "bg-[#333] animate-navbar" : "bg-transparent"
-       }`}
+       }
+       ${checknotfound ? "" : "hidden"}`}
       >
         <div className="flex gap-4 lg:ml-10 ">
           <FaBars

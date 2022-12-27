@@ -1,8 +1,50 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
+
+const routepath = [
+  {
+    id: 1,
+    path: "/home",
+  },
+  {
+    id: 2,
+    path: "/products",
+  },
+  {
+    id: 3,
+    path: "/contact",
+  },
+  {
+    id: 4,
+    path: "/products/search",
+  },
+  {
+    id: 5,
+    path: "/cart",
+  },
+  {
+    id: 6,
+    path: "/login",
+  },
+  {
+    id: 7,
+    path: "/signup",
+  },
+  {
+    id: 8,
+    path: "/checkout",
+  },
+  {
+    id: 9,
+    path: "/products/idproduct",
+  },
+];
 
 function Footer(props) {
+  const { pathname } = useLocation();
+  const checknotfound = routepath.find((item) => item.path === pathname);
   return (
-    <div className="sm:app-container pt-4">
+    <div className={`sm:app-container pt-4 ${checknotfound ? "" : "hidden"}`}>
       <div className="grid md:grid-cols-2 gap-4 mb-3">
         <div className="flex flex-col justify-start items-start">
           <img

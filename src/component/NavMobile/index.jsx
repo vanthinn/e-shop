@@ -30,7 +30,7 @@ function NavMobile(props) {
   }
 
   return (
-    <div className="relative">
+    <div className="relative w-full">
       {ismoble && (
         <div
           className={`fixed top-0 right-0 left-0 bottom-0 bg-[#333]/50 z-[300] transition-all duration-500 ease-linear`}
@@ -39,7 +39,7 @@ function NavMobile(props) {
       )}
 
       <div
-        className={`fixed top-0 left-0 bottom-0 min-h-[100vh] z-[400] w-[300px] flex flex-col bg-[#333] text-white px-6 transition-all duration-500 ease-linear 
+        className={`fixed top-0 left-0 bottom-0 min-h-[100vh] z-[400] sm:w-full sm:overflow-y-hidden md:w-[50%] flex flex-col bg-[#333] text-white px-6 transition-all duration-500 ease-linear 
           ${ismoble ? "translate-x-0" : "translate-x-[-100%]"}`}
       >
         <button

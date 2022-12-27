@@ -52,6 +52,7 @@ function Login(props) {
         })
         .catch((error) => {
           toast.error("Log in Fall!!");
+          setisloading(false);
         });
     },
   });
@@ -76,6 +77,7 @@ function Login(props) {
       })
       .catch((error) => {
         toast.error("Log in Fall!!");
+        setisloading(false);
       });
   }
 
@@ -97,6 +99,7 @@ function Login(props) {
       })
       .catch((error) => {
         toast.error("Log in Fall!!");
+        setisloading(false);
       });
   }
   return (
